@@ -2,14 +2,21 @@ import React from "react";
 import Header from "../components/Header";
 import bghero from "../assets/other/bghero.jpeg";
 import bgman from "../assets/other/bgman.png";
+import bggirl from "../assets/other/gymgirl.png";
 import DetailCard from "../components/DetailCard";
 
 const HomePage = () => {
+  const cardData = [
+    { number: "10+", text: "Professional Trainers" },
+    { number: "50+", text: "Training Programs" },
+    { number: "1000+", text: "Active Members" },
+    { number: "5+", text: "Years Experience" },
+  ];
+
   return (
     <>
       <Header />
       <div className="w-full">
-
         {/* hero section */}
         <div className="relative w-full min-h-[90vh] overflow-hidden bg-cuswhite">
           <div className="absolute inset-0">
@@ -22,7 +29,6 @@ const HomePage = () => {
           </div>
 
           <div className="relative z-10 mx-auto flex min-h-[90vh] max-w-7xl flex-col-reverse items-center gap-6 p-4 md:flex-row md:items-center md:p-8">
-            
             {/* left side text & buttons*/}
             <div className="w-full md:w-1/2 text-left md:text-left">
               <h1 className="text-3xl font-bold uppercase leading-tight text-cuswhite md:text-5xl">
@@ -60,7 +66,48 @@ const HomePage = () => {
         </div>
 
         {/* details section */}
-        <DetailCard />
+        <div className="grid grid-cols-2 md:grid-cols-4 max-w-7xl mx-auto mt-40">
+          {cardData.map((card, index) => (
+            <DetailCard key={index} number={card.number} text={card.text} />
+          ))}
+        </div>
+
+        {/* About Section */}
+        <div className="relative z-10 mx-auto flex min-h-[90vh] max-w-7xl flex-col-reverse items-center md:flex-row md:items-center md:justify-center">
+          {/* left side text */}
+          <div className="w-full md:w-1/2 px-4 md:px-6 text-left md:text-left">
+          <span className="text-cusblack">About Our Gym</span>
+            <h2 className="text-1xl font-bold uppercase leading-tight text-cusblack md:text-3xl">
+              Your Journey to a
+              <span className="text-cusyellow">
+                {" "}
+                Healthier <br /> Lifestyle{" "}
+              </span>
+              Starts Here
+            </h2>
+            <p className="mt-10 text-sm md:text-base">
+              Our gym is dedicated to helping individuals achieve their fitness
+              goals through professional guidance, modern facilities, and a
+              supportive community. Whether you are just starting your fitness
+              journey or looking to push your limits, our expert trainers and
+              high-quality equipment provide everything you need to succeed. <br /><br />
+            We believe that fitness is not just about exercise it's about
+              building confidence, discipline, and a healthier lifestyle. With
+              personalized training programs, diverse workout options, and a
+              motivating environment, we help our members become the best
+              version of themselves.
+            </p>
+          </div>
+
+          {/* right side image */}
+          <div className="w-full md:w-1/2 px-4 md:px-6 flex justify-center md:justify-end">
+            <img
+              src={bggirl}
+              alt="hero girl"
+              className="h-[65vh] w-auto max-w-full object-contain"
+            />
+          </div>
+        </div>
       </div>
     </>
   );
