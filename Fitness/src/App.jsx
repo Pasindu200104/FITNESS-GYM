@@ -1,12 +1,12 @@
-import './App.css'
-import '../src/index.css'
+import './index.css'
+import { Routes, Route } from 'react-router'
+import HomePage from './pages/HomePage'
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      <h1 className='text-3xl font-bold text-center text-green-500'>Fitness App</h1>
-    </>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+    </Routes>
   )
 }
 
