@@ -4,6 +4,7 @@ import DetailCard from "../components/DetailCard";
 import ServiceCard from "../components/ServiceCard";
 import PaymentCard from "../components/PaymentCard";
 import TrainerCard from "../components/TrainerCard";
+import Footer from "../components/footer";
 
 import bghero from "../assets/other/bghero.jpeg";
 import bgman from "../assets/other/bgman.png";
@@ -19,7 +20,10 @@ import m2 from "../assets/trainers/m2.png";
 import m3 from "../assets/trainers/m3.png";
 import w1 from "../assets/trainers/w1.png";
 import w2 from "../assets/trainers/w2.png";
-
+import home from "../assets/icons/home.png";
+import phone from "../assets/icons/phone.png";
+import mail from "../assets/icons/mail.png";
+import bgwhite1 from "../assets/bgimages/bgwhite01.png";
 
 const HomePage = () => {
   const cardData = [
@@ -30,10 +34,22 @@ const HomePage = () => {
   ];
 
   const trainerData = [
-    { image: m1, name: "Alex Carter", role: "Head Strength & Conditioning Coach" },
-    { image: m2, name: "Ryan Mitchell", role: "Certified Personal Fitness Trainer" },
+    {
+      image: m1,
+      name: "Alex Carter",
+      role: "Head Strength & Conditioning Coach",
+    },
+    {
+      image: m2,
+      name: "Ryan Mitchell",
+      role: "Certified Personal Fitness Trainer",
+    },
     { image: m3, name: "Daniel Brooks", role: "Weight Training Specialist" },
-    { image: w1, name: "Sophia Martinez", role: "Yoga & Flexibility Instructor" },
+    {
+      image: w1,
+      name: "Sophia Martinez",
+      role: "Yoga & Flexibility Instructor",
+    },
     { image: w2, name: "Emma Walker", role: "Nutrition & Wellness Coach" },
   ];
 
@@ -65,43 +81,46 @@ const HomePage = () => {
   ];
 
   const allFeatures = [
-  "Full gym equipment access",
-  "Access to group fitness classes",
-  "Free fitness assessment",
-  "Locker room access",
-  "Personalized workout guidance",
-  "Nutrition consultation",
-  "Priority class booking",
-];
+    "Full gym equipment access",
+    "Access to group fitness classes",
+    "Free fitness assessment",
+    "Locker room access",
+    "Personalized workout guidance",
+    "Nutrition consultation",
+    "Priority class booking",
+  ];
 
   const paymentPlans = [
     {
       title: "Individual",
       price: "29",
       interval: "/mo",
-      description: "Perfect for individuals who want full access to our gym facilities",
+      description:
+        "Perfect for individuals who want full access to our gym facilities",
       availability: [true, true, true, true, false, false, false],
     },
     {
       title: "Couples",
       price: "49",
       interval: "/mo",
-      description: "Designed for couples who want to stay motivated and achieve their fitness goals together",
+      description:
+        "Designed for couples who want to stay motivated and achieve their fitness goals together",
       availability: [true, true, true, true, true, false, false],
     },
     {
       title: "FAMILY",
       price: "69",
       interval: "/mo",
-      description: "The perfect option for families who want to maintain a healthy and active lifestyle together",
-       availability: [true, true, true, true, true, true, true],
+      description:
+        "The perfect option for families who want to maintain a healthy and active lifestyle together",
+      availability: [true, true, true, true, true, true, true],
     },
   ];
 
   return (
     <>
       <Header />
-      <div className="w-full">
+      <div className="w-full min-h-screen bg-cuswhite text-cusgray">
         {/* hero section */}
         <div className="relative w-full min-h-[90vh] overflow-hidden bg-cuswhite">
           <div className="absolute inset-0">
@@ -158,7 +177,7 @@ const HomePage = () => {
         </div>
 
         {/* About Section */}
-        <div className="relative z-10 mx-auto flex min-h-[90vh] max-w-7xl flex-col-reverse items-center md:flex-row md:items-center md:justify-center">
+        <div className="relative mt-10 z-10 mx-auto flex min-h-[90vh] max-w-7xl flex-col-reverse items-center md:flex-row md:items-center md:justify-center">
           {/* left side text */}
           <div className="w-full md:w-1/2 px-4 md:px-6 text-left md:text-left">
             <span className="text-cusblack">About Our Gym</span>
@@ -197,8 +216,10 @@ const HomePage = () => {
         </div>
 
         {/* Service Section  */}
-        <div className="relative py-16 px-4" style={{ backgroundImage: `url(${bgserv})` }}>
-
+        <div
+          className="relative py-16 px-4 mt-10"
+          style={{ backgroundImage: `url(${bgserv})` }}
+        >
           <div className="absolute inset-0 bg-black/70 z-10" />
 
           <div className="relative z-20 max-w-7xl mx-auto">
@@ -222,7 +243,7 @@ const HomePage = () => {
         </div>
 
         {/* Payments Section  */}
-        <div className="relative py-16 px-4">
+        <div className="relative py-16 px-4 mt-10">
           <div className="relative z-20 max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <p className="text-cusblack text-sm font-semibold uppercase tracking-widest mb-2">
@@ -241,8 +262,10 @@ const HomePage = () => {
         </div>
 
         {/* Trainers Section  */}
-        <div className="relative py-16 px-4" style={{ backgroundImage: `url(${bgtrain})` }}>
-
+        <div
+          className="relative py-16 px-4 mt-10"
+          style={{ backgroundImage: `url(${bgtrain})` }}
+        >
           <div className="absolute inset-0 bg-black/70 z-10" />
 
           <div className="relative z-20 max-w-7xl mx-auto">
@@ -251,9 +274,10 @@ const HomePage = () => {
                 Meet Our Expert Trainers
               </p>
               <h2 className="text-cuswhite text-4xl md:text-5xl font-bold leading-tight">
-                Train with <span className="text-cusyellow">professionals</span> who are <span className="text-cusyellow">passionate</span> about 
-                <br /> helping you <span className="text-cusyellow">succeed</span>{" "}
-                Goals
+                Train with <span className="text-cusyellow">professionals</span>{" "}
+                who are <span className="text-cusyellow">passionate</span> about
+                <br /> helping you{" "}
+                <span className="text-cusyellow">succeed</span> Goals
               </h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 justify-content">
@@ -263,7 +287,97 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+
+        {/* contact Section  */}
+        <div className="relative mt-10 z-10 mx-auto flex min-h-[90vh] max-w-7xl flex-col-reverse items-center md:flex-row md:items-center md:justify-center">
+          {/* left side text */}
+          <div className="w-full md:w-1/2 px-4 md:px-6 text-left md:text-left">
+            <span className="text-cusblack">Get in Touch</span>
+            <h2 className="text-1xl font-bold uppercase leading-tight text-cusblack md:text-3xl">
+              Start Your
+              <span className="text-cusyellow">
+                {" "}
+                Fitness Journey <br />
+              </span>
+              Today{" "}
+            </h2>
+            <p className="mt-4 text-sm md:text-base">
+              Have questions about our programs, membership plans, or training
+              sessions? Send us a message.
+            </p>
+            <div className="bg-cusgray p-4 rounded-lg mt-6">
+              <form className="flex flex-col gap-4 text-cuswhite font-bold">
+                <label htmlFor="name">Name</label>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  name="name"
+                  className=" bg-cuswhite text-cusgray p-2 rounded-md font-normal placeholder:text-cuswhite/50 border border-cuswhite/30 focus:outline-none focus:ring-2 focus:ring-cusyellow"
+                />
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  name="email"
+                  className=" bg-cuswhite text-cusgray p-2 rounded-md font-normal placeholder:text-cuswhite/50 border border-cuswhite/30 focus:outline-none focus:ring-2 focus:ring-cusyellow"
+                />
+                <label htmlFor="message">Message</label>
+                <textarea
+                  placeholder="Your Message"
+                  rows="4"
+                  name="message"
+                  className="bg-cuswhite text-cusgray p-2 rounded-md font-normal placeholder:text-cuswhite/50 border border-cuswhite/30 focus:outline-none focus:ring-2 focus:ring-cusyellow"
+                ></textarea>
+                <button
+                  type="submit"
+                  className="btn bg-cusyellow text-cuswhite hover:bg-cusyellow/70 font-bold py-2 rounded-lg"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+
+          {/* right side image */}
+          <div className="w-full h-full md:w-1/2 px-4 md:px-6 flex justify-center md:justify-end rounded-lg overflow-hidden">
+            <div className="bg-cusgray/90 text-cuswhite rounded-lg w-full max-w-[30rem]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d990.0714981648642!2d79.87573938691513!3d6.975545216899215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25966ac91e159%3A0xad3078f9079728e1!2sWarrior%20Zone%20Fitness%20Club!5e0!3m2!1sen!2slk!4v1773863576354!5m2!1sen!2slk"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-[15rem] sm:h-[20rem] rounded-lg"
+              />
+              <div className="p-6 mt-5">
+                <h1 className="text-2xl font-bold text-cuswhite text-center mb-5">
+                  Fitness Center
+                </h1>
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-3">
+                    <img src={phone} alt="phone" className="w-6 h-6" />
+                    <span className="text-2xl font-normal">0711236549</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <img src={mail} alt="mail" className="w-6 h-6" />
+                    <span className="text-2xl font-normal">MSG@Fitness.com</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <img src={home} alt="home" className="w-6 h-6" />
+                    <span className="text-2xl font-normal">
+                      128 Fitness Avenue Colombo 05 Sri Lanka
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
+      
+        {/* footer */}
+        <Footer/>
     </>
   );
 };

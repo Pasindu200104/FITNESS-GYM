@@ -9,7 +9,7 @@ const PaymentCard = ({
   availability = [],
 }) => {
   return (
-    <div className="card w-full bg-cusgray text-cuswhite shadow-sm p-4 rounded-lg hover:border-4 hover:border-cusyellow transition-border duration-100">
+    <div className="card w-full bg-cusgray text-cuswhite shadow-sm p-4 rounded-lg hover:border-4 hover:border-cusyellow transition-border duration-50">
       <div className="card-body">
         <div className="flex justify-center">
           <span className="text-3xl font-bold uppercase text-center">

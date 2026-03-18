@@ -2,7 +2,7 @@ import React from "react";
 
 const TrainerCard = ({ image, name, role }) => {
   return (
-    <div className="card w-56 shadow-lg overflow-hidden rounded-xl bg-cusgray text-cuswhite hover-3d">
+    <div className="card w-56 shadow-lg overflow-hidden rounded-xl bg-cusgray text-cuswhite transition-transform duration-300 hover:scale-105 hover:border-2 hover:border-cusyellow">
       <figure className="relative">
         <img
           src={image}
@@ -14,14 +14,6 @@ const TrainerCard = ({ image, name, role }) => {
         <h2 className="text-cuswhite font-bold text-base">{name}</h2>
         <p className="text-cuswhite/70 text-xs mt-1">{role}</p>
       </div>
-      <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
     </div>
   );
 };
