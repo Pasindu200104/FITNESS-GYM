@@ -4,7 +4,7 @@ import DetailCard from "../components/DetailCard.jsx";
 import ServiceCard from "../components/ServiceCard.jsx";
 import PaymentCard from "../components/PaymentCard.jsx";
 import TrainerCard from "../components/TrainerCard.jsx";
-import Footer from "../components/footer";
+import Footer from "../components/Footer.jsx";
 
 import bghero from "../assets/other/bghero.jpeg";
 import bgman from "../assets/other/bgman.png";
