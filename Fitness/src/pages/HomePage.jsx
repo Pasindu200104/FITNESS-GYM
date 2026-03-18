@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "../components/Header";
-import DetailCard from "../components/DetailCard";
-import ServiceCard from "../components/ServiceCard";
-import PaymentCard from "../components/PaymentCard";
-import TrainerCard from "../components/TrainerCard";
+import Header from "../components/Header.jsx";
+import DetailCard from "../components/DetailCard.jsx";
+import ServiceCard from "../components/ServiceCard.jsx";
+import PaymentCard from "../components/PaymentCard.jsx";
+import TrainerCard from "../components/TrainerCard.jsx";
 import Footer from "../components/footer";
 
 import bghero from "../assets/other/bghero.jpeg";
@@ -23,7 +23,6 @@ import w2 from "../assets/trainers/w2.png";
 import home from "../assets/icons/home.png";
 import phone from "../assets/icons/phone.png";
 import mail from "../assets/icons/mail.png";
-import bgwhite1 from "../assets/bgimages/bgwhite01.png";
 
 const HomePage = () => {
   const cardData = [
