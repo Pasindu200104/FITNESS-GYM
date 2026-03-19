@@ -14,6 +14,54 @@
 </head>
 
 <body>
+  <div id="loading-screen" style="
+      position: fixed;
+      inset: 0;
+      background-color: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    ">
+      <img src="/src/assets/icons/logo.png" alt="Logo" style="width: 70px; height: 70px; margin-bottom: 16px;" />
+      <span style="color: white; font-size: 1.2rem; font-weight: bold; letter-spacing: 2px;">KONCEPTHIVE</span>
+      <div style="
+        margin-top: 20px;
+        width: 50px;
+        height: 4px;
+        background-color: #333;
+        border-radius: 9999px;
+        overflow: hidden;
+      ">
+        <div style="
+          height: 100%;
+          width: 40%;
+          background-color: #f59e0b;
+          border-radius: 9999px;
+          animation: slide 1s infinite ease-in-out;
+        "></div>
+      </div>
+    </div>
+
+    <!-- Loading Animation -->
+    <style>
+      @keyframes slide {
+        0%   { transform: translateX(-100%); }
+        50%  { transform: translateX(150%); }
+        100% { transform: translateX(-100%); }
+      }
+    </style>
+
+    <!-- Hide loading screen once React loads -->
+    <script>
+      window.addEventListener('load', function () {
+        const loader = document.getElementById('loading-screen');
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500);
+      });
+    </script>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
