@@ -170,9 +170,9 @@ const HomePage = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-cusblack via-cusblack/80 to-transparent"></div>
           </div>
 
-          <div className="relative z-10 mx-auto flex min-h-[90vh] max-w-7xl flex-col-reverse items-center gap-6 p-4 md:flex-row md:items-center md:p-8">
+          <div className="relative z-10 mx-auto flex min-h-[90vh] max-w-7xl flex-col items-center justify-center gap-6 p-4 md:flex-row md:items-center md:justify-start md:p-8">
             {/* left side text & buttons*/}
-            <div className="w-full md:w-1/2 text-center lg:text-left">
+            <div className="w-full text-center lg:w-1/2 lg:text-left">
               <h1 className="text-3xl font-bold uppercase leading-tight text-cuswhite md:text-5xl">
                 Transform
                 <span className="text-cusyellow">
