@@ -2,8 +2,8 @@ import React from "react";
 
 const TrainerCard = ({ image, name, role }) => {
   return (
-    <div className="card w-56 shadow-lg overflow-hidden rounded-xl bg-cusgray text-cuswhite transition-transform duration-300 hover:scale-105 hover:border-2 hover:border-cusyellow">
-      <figure className="relative">
+    <div className="card w-full max-w-sm shadow-lg overflow-hidden rounded-xl bg-cusgray text-cuswhite transition-transform duration-300 hover:scale-105 hover:border-2 hover:border-cusyellow">
+      <figure className="relative h-64 sm:h-72">
         <img
           src={image}
           alt={name}

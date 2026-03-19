@@ -14,26 +14,30 @@ const Header = () => {
 
                 {/* center: navigation */}
                 <nav className="hidden md:flex items-center space-x-6 text-sm font-bold">
-                    <a href="#" className="transition hover:text-cusyellow">Home</a>
-                    <a href="#" className="transition hover:text-cusyellow">About</a>
-                    <a href="#" className="transition hover:text-cusyellow">Service</a>
-                    <a href="#" className="transition hover:text-cusyellow">Contact</a>
+                    <a href="#home" className="transition hover:text-cusyellow">Home</a>
+                    <a href="#about" className="transition hover:text-cusyellow">About</a>
+                    <a href="#services" className="transition hover:text-cusyellow">Service</a>
+                    <a href="#payments" className="transition hover:text-cusyellow">Payment</a>
+                    <a href="#trainers" className="transition hover:text-cusyellow">Trainers</a>
+                    <a href="#contact" className="transition hover:text-cusyellow">Contact</a>
                 </nav>
 
                 {/* right end: contact button */}
                 <div>
-                    <button className="rounded-xl bg-cusyellow px-5 py-2 font-bold text-slate-800 shadow transition hover:brightness-95">
+                    <a href="#contact" className="rounded-xl bg-cusyellow px-5 py-2 font-bold text-slate-800 shadow transition hover:brightness-95">
                         Contact Us
-                    </button>
+                    </a>
                 </div>
             </div>
 
             {/* Mobile nav links */}
             <div className="flex flex-wrap justify-center gap-4 bg-slate-600 px-4 py-2 md:hidden">
-                <a href="#" className="text-sm font-medium text-white hover:text-cyan-300">Home</a>
-                <a href="#" className="text-sm font-medium text-white hover:text-cyan-300">About</a>
-                <a href="#" className="text-sm font-medium text-white hover:text-cyan-300">Service</a>
-                <a href="#" className="text-sm font-medium text-white hover:text-cyan-300">Contact</a>
+                <a href="#home" className="text-sm font-medium text-white hover:text-cyan-300">Home</a>
+                <a href="#about" className="text-sm font-medium text-white hover:text-cyan-300">About</a>
+                <a href="#services" className="text-sm font-medium text-white hover:text-cyan-300">Service</a>
+                <a href="#payments" className="text-sm font-medium text-white hover:text-cyan-300">Payment</a>
+                <a href="#trainers" className="text-sm font-medium text-white hover:text-cyan-300">Trainers</a>
+                <a href="#contact" className="text-sm font-medium text-white hover:text-cyan-300">Contact</a>
             </div>
         </header>
     );

@@ -1,4 +1,5 @@
 import React from "react";
+import toast from "react-hot-toast";
 
 const PaymentCard = ({
   title,
@@ -8,8 +9,15 @@ const PaymentCard = ({
   allFeatures = [],
   availability = [],
 }) => {
+
+  const developing = (e) =>{
+    e.preventDefault();
+    toast.error("This feature is under development");
+    return;
+  }
+
   return (
-    <div className="card w-full bg-cusgray text-cuswhite shadow-sm p-4 rounded-lg hover:border-4 hover:border-cusyellow transition-border duration-50">
+    <div className="card w-full bg-cusgray text-cuswhite shadow-sm p-4 rounded-lg border-4 border-transparent hover:border-cusyellow transition-all duration-150">
       <div className="card-body">
         <div className="flex justify-center">
           <span className="text-3xl font-bold uppercase text-center">
@@ -55,7 +63,7 @@ const PaymentCard = ({
           })}
         </ul>
         <div className="mt-6 p-4">
-          <button className="btn bg-cusyellow text-cuswhite hover:bg-cusyellow/70 font-bold py-2 rounded-lg w-full">
+          <button onClick={developing} className="btn bg-cusyellow text-cuswhite hover:bg-cusyellow/70 font-bold py-2 rounded-lg w-full">
             Subscribe
           </button>
         </div>

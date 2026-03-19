@@ -16,7 +16,7 @@ const ServiceCard = ({ image, title, description }) => {
         <h3 className="text-cuswhite text-sm font-bold leading-snug">
           {title}
         </h3>
-        <p className="text-gray-300 text-xs leading-relaxed line-clamp-4 max-h-0 opacity-0 overflow-hidden transition-all duration-400 group-hover:max-h-24 group-hover:opacity-100 mt-1">
+        <p className="text-gray-300 text-xs leading-relaxed line-clamp-4 max-h-0 opacity-0 overflow-hidden transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100 mt-1">
           {description}
         </p>
       </div>

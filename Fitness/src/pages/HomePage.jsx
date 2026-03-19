@@ -7,6 +7,7 @@ import TrainerCard from "../components/TrainerCard.jsx";
 import Footer from "../components/Footer.jsx";
 
 import bghero from "../assets/other/bghero.jpeg";
+import bgmain from "../assets/bgimages/bgwhite01.png";
 import bgman from "../assets/other/bgman.png";
 import bggirl from "../assets/other/gymgirl.png";
 import diat from "../assets/services/diat.png";
@@ -23,6 +24,8 @@ import w2 from "../assets/trainers/w2.png";
 import home from "../assets/icons/home.png";
 import phone from "../assets/icons/phone.png";
 import mail from "../assets/icons/mail.png";
+import useFadeIn from "../hooks/useFadeIn.js";
+import toast, { Toaster } from "react-hot-toast";
 
 const HomePage = () => {
   const cardData = [
@@ -116,12 +119,48 @@ const HomePage = () => {
     },
   ];
 
+  const details = useFadeIn();
+  const about = useFadeIn();
+  const servicesSection = useFadeIn();
+  const paymentsSection = useFadeIn();
+  const trainersSection = useFadeIn();
+  const contactSection = useFadeIn();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const message = e.target.message.value;
+
+    if (!name) {
+      toast.error("Name is required");
+      console.log("ok");
+      return;
+    }else if (!email) {
+      toast.error("Email is required");
+      return;
+    }else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      toast.error("Please enter a valid email address");
+      return;
+    }else if (!message) {
+      toast.error("Message is required");
+      return;
+    }else{
+      toast.success("Message sent successfully");
+    }
+
+
+    console.log("Submited", { name, email, message });
+  };
+
   return (
     <>
       <Header />
-      <div className="w-full min-h-screen bg-cuswhite text-cusgray">
+       <Toaster position="top-center"/>
+      <div className="w-full min-h-screen bg-cover bg-fixed bg-cuswhite text-cusgray overflow-hidden" style={{backgroundImage: `url(${bgmain})`,}}>
         {/* hero section */}
-        <div className="relative w-full min-h-[90vh] overflow-hidden bg-cuswhite">
+        <div id="home" className="relative w-full min-h-[90vh] overflow-hidden bg-cuswhite">
           <div className="absolute inset-0">
             <img
               src={bghero}
@@ -133,7 +172,7 @@ const HomePage = () => {
 
           <div className="relative z-10 mx-auto flex min-h-[90vh] max-w-7xl flex-col-reverse items-center gap-6 p-4 md:flex-row md:items-center md:p-8">
             {/* left side text & buttons*/}
-            <div className="w-full md:w-1/2 text-left md:text-left">
+            <div className="w-full md:w-1/2 text-center lg:text-left">
               <h1 className="text-3xl font-bold uppercase leading-tight text-cuswhite md:text-5xl">
                 Transform
                 <span className="text-cusyellow">
@@ -147,18 +186,18 @@ const HomePage = () => {
                 equipment and motivating environment.
               </p>
 
-              <div className="mt-6 flex flex-col items-start gap-3 md:flex-row md:justify-start">
-                <button className="rounded-xl bg-cusyellow px-5 py-2 font-bold text-cuswhite transition hover:brightness-95">
+              <div className="mt-6 flex flex-row justify-center gap-3 lg:justify-start">
+                <a href="#contact" className="rounded-xl w-4/12 md:w-5/12 lg:w-4/12 text-center bg-cusyellow px-5 py-2 font-bold text-cuswhite transition hover:brightness-95">
                   Contact Us
-                </button>
-                <button className="rounded-xl border border-cusyellow px-5 py-2 font-bold text-cusyellow transition hover:bg-cusyellow hover:text-cuswhite">
+                </a>
+                <a href="#services" className="rounded-xl w-4/12 md:w-5/12 lg:w-4/12 text-center border border-cusyellow px-5 py-2 font-bold text-cusyellow transition hover:bg-cusyellow hover:text-cuswhite">
                   Service's
-                </button>
+                </a>
               </div>
             </div>
 
             {/* right side image */}
-            <div className="hidden md:block">
+            <div className="hidden lg:block">
               <img
                 src={bgman}
                 alt="hero person"
@@ -169,18 +208,36 @@ const HomePage = () => {
         </div>
 
         {/* details section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 max-w-7xl mx-auto mt-20 gap-4">
+        <div 
+          ref={details.elementRef}
+          style={{
+            opacity: details.isVisible ? 1 : 0,
+            transform: details.isVisible ? "translateY(0)" : "translateY(80px)",
+            transition: "all 2s ease-out",
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto mt-20 gap-4"
+        >
           {cardData.map((card, index) => (
             <DetailCard key={index} number={card.number} text={card.text} />
           ))}
         </div>
 
         {/* About Section */}
-        <div className="relative mt-10 z-10 mx-auto flex min-h-[90vh] max-w-7xl flex-col-reverse items-center md:flex-row md:items-center md:justify-center">
+        <div id="about" className="relative mt-10 z-10 mx-auto flex min-h-[90vh] max-w-7xl flex-col-reverse items-center md:flex-row md:items-center md:justify-center">
           {/* left side text */}
-          <div className="w-full md:w-1/2 px-4 md:px-6 text-left md:text-left">
+          <div
+            ref={about.elementRef}
+            style={{
+              opacity: about.isVisible ? 1 : 0,
+              transform: about.isVisible
+                ? "translatex(0)"
+                : "translatex(-80px)",
+              transition: "all 2s ease-out",
+            }}
+            className="w-full md:w-1/2 px-4 md:px-6 text-left md:text-left mt-6"
+          >
             <span className="text-cusblack">About Our Gym</span>
-            <h2 className="text-1xl font-bold uppercase leading-tight text-cusblack md:text-3xl">
+            <h2 className="text-3xl md:text-4xl font-bold uppercase leading-tight text-cusblack">
               Your Journey to a
               <span className="text-cusyellow">
                 {" "}
@@ -205,7 +262,15 @@ const HomePage = () => {
           </div>
 
           {/* right side image */}
-          <div className="w-full md:w-1/2 px-4 md:px-6 flex justify-center md:justify-end">
+          <div
+            ref={about.elementRef}
+            style={{
+              opacity: about.isVisible ? 1 : 0,
+              transform: about.isVisible ? "translatex(0)" : "translatex(80px)",
+              transition: "all 2s ease-out",
+            }}
+            className="w-full md:w-1/2 px-4 md:px-6 flex justify-center md:justify-end"
+          >
             <img
               src={bggirl}
               alt="hero girl"
@@ -215,9 +280,17 @@ const HomePage = () => {
         </div>
 
         {/* Service Section  */}
-        <div
-          className="relative py-16 px-4 mt-10"
-          style={{ backgroundImage: `url(${bgserv})` }}
+        <div id="services"
+          ref={servicesSection.elementRef}
+          className="relative py-16 px-4 mt-10 bg-cover"
+          style={{
+            backgroundImage: `url(${bgserv})`,
+            opacity: servicesSection.isVisible ? 1 : 0,
+            transform: servicesSection.isVisible
+              ? "translatey(0)"
+              : "translatey(80px)",
+            transition: "all 2s ease-out",
+          }}
         >
           <div className="absolute inset-0 bg-black/70 z-10" />
 
@@ -226,14 +299,14 @@ const HomePage = () => {
               <p className="text-cuswhite text-sm font-semibold uppercase tracking-widest mb-2">
                 Our Fitness Services
               </p>
-              <h2 className="text-cuswhite text-4xl md:text-5xl font-bold leading-tight">
+              <h2 className="text-cuswhite text-3xl md:text-4xl font-bold leading-tight">
                 Everything You <span className="text-cusyellow">Need</span> to
                 Reach
                 <br /> Your <span className="text-cusyellow">Fitness</span>{" "}
                 Goals
               </h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 justify-content">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
               {services.map((service, index) => (
                 <ServiceCard key={index} {...service} />
               ))}
@@ -242,17 +315,27 @@ const HomePage = () => {
         </div>
 
         {/* Payments Section  */}
-        <div className="relative py-16 px-4 mt-10">
+        <div id="payments"
+          ref={paymentsSection.elementRef}
+          style={{
+            opacity: paymentsSection.isVisible ? 1 : 0,
+            transform: paymentsSection.isVisible
+              ? "translatey(0)"
+              : "translatey(80px)",
+            transition: "all 2s ease-out",
+          }}
+          className="relative py-16 px-4 mt-10 ${fadeClass(paymentsSection)}"
+        >
           <div className="relative z-20 max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <p className="text-cusblack text-sm font-semibold uppercase tracking-widest mb-2">
                 Our Prices
               </p>
-              <h2 className="text-cusblack text-4xl md:text-5xl font-bold leading-tight">
+              <h2 className="text-cusblack text-3xl md:text-4xl font-bold leading-tight">
                 Choose a <span className="text-cusyellow">Plan</span>
               </h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 justify-content">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-content">
               {paymentPlans.map((plan, index) => (
                 <PaymentCard key={index} {...plan} allFeatures={allFeatures} />
               ))}
@@ -261,9 +344,17 @@ const HomePage = () => {
         </div>
 
         {/* Trainers Section  */}
-        <div
-          className="relative py-16 px-4 mt-10"
-          style={{ backgroundImage: `url(${bgtrain})` }}
+        <div id="trainers"
+          ref={trainersSection.elementRef}
+          className="relative py-16 px-4 mt-10 ${fadeClass(trainersSection)}"
+          style={{
+            backgroundImage: `url(${bgtrain})`,
+            opacity: trainersSection.isVisible ? 1 : 0,
+            transform: trainersSection.isVisible
+              ? "translatey(0)"
+              : "translatey(80px)",
+            transition: "all 2s ease-out",
+          }}
         >
           <div className="absolute inset-0 bg-black/70 z-10" />
 
@@ -272,14 +363,14 @@ const HomePage = () => {
               <p className="text-cuswhite text-sm font-semibold uppercase tracking-widest mb-2">
                 Meet Our Expert Trainers
               </p>
-              <h2 className="text-cuswhite text-4xl md:text-5xl font-bold leading-tight">
+              <h2 className="text-cuswhite text-3xl md:text-4xl font-bold leading-tight">
                 Train with <span className="text-cusyellow">professionals</span>{" "}
                 who are <span className="text-cusyellow">passionate</span> about
                 <br /> helping you{" "}
                 <span className="text-cusyellow">succeed</span> Goals
               </h2>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 justify-content">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 justify-items-center">
               {trainerData.map((trainer, index) => (
                 <TrainerCard key={index} {...trainer} />
               ))}
@@ -288,11 +379,21 @@ const HomePage = () => {
         </div>
 
         {/* contact Section  */}
-        <div className="relative mt-10 z-10 mx-auto flex min-h-[90vh] max-w-7xl flex-col-reverse items-center md:flex-row md:items-center md:justify-center">
+        <div id="contact" className="relative mt-10 mb-10 z-10 mx-auto flex min-h-[90vh] max-w-7xl flex-col items-center md:flex-row md:items-center md:justify-center">
           {/* left side text */}
-          <div className="w-full md:w-1/2 px-4 md:px-6 text-left md:text-left">
+          <div
+            ref={contactSection.elementRef}
+            style={{
+              opacity: contactSection.isVisible ? 1 : 0,
+              transform: contactSection.isVisible
+                ? "translatex(0)"
+                : "translatex(-80px)",
+              transition: "all 2s ease-out",
+            }}
+            className="w-full md:w-1/2 px-4 md:px-6 text-left md:text-left mt-5"
+          >
             <span className="text-cusblack">Get in Touch</span>
-            <h2 className="text-1xl font-bold uppercase leading-tight text-cusblack md:text-3xl">
+            <h2 className="text-3xl md:text-4xl font-bold uppercase leading-tight text-cusblack">
               Start Your
               <span className="text-cusyellow">
                 {" "}
@@ -305,7 +406,10 @@ const HomePage = () => {
               sessions? Send us a message.
             </p>
             <div className="bg-cusgray p-4 rounded-lg mt-6">
-              <form className="flex flex-col gap-4 text-cuswhite font-bold">
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col gap-4 text-cuswhite font-bold"
+              >
                 <label htmlFor="name">Name</label>
                 <input
                   type="text"
@@ -338,7 +442,17 @@ const HomePage = () => {
           </div>
 
           {/* right side image */}
-          <div className="w-full h-full md:w-1/2 px-4 md:px-6 flex justify-center md:justify-end rounded-lg overflow-hidden">
+          <div
+            ref={contactSection.elementRef}
+            style={{
+              opacity: contactSection.isVisible ? 1 : 0,
+              transform: contactSection.isVisible
+                ? "translatex(0)"
+                : "translatex(80px)",
+              transition: "all 2s ease-out",
+            }}
+            className="w-full h-full mt-5 md:w-1/2 px-4 md:px-6 flex justify-center md:justify-end rounded-lg overflow-hidden"
+          >
             <div className="bg-cusgray/90 text-cuswhite rounded-lg w-full max-w-[30rem]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d990.0714981648642!2d79.87573938691513!3d6.975545216899215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25966ac91e159%3A0xad3078f9079728e1!2sWarrior%20Zone%20Fitness%20Club!5e0!3m2!1sen!2slk!4v1773863576354!5m2!1sen!2slk"
@@ -359,7 +473,9 @@ const HomePage = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     <img src={mail} alt="mail" className="w-6 h-6" />
-                    <span className="text-2xl font-normal">MSG@Fitness.com</span>
+                    <span className="text-2xl font-normal">
+                      MSG@Fitness.com
+                    </span>
                   </div>
                   <div className="flex items-center gap-3">
                     <img src={home} alt="home" className="w-6 h-6" />
@@ -372,11 +488,10 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-
       </div>
-      
-        {/* footer */}
-        <Footer/>
+
+      {/* footer */}
+      <Footer />
     </>
   );
 };
